@@ -1,0 +1,92 @@
+body{
+    background-color: #151518;
+    color: #bfbabd;
+}
+
+.projects{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion {
+    background-color: #a46748;
+    color: #000000;
+    cursor: pointer;
+    padding: 20px;
+    width: 25%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-top: 10px;
+    display: block;
+    border-radius: 20px;
+
+    
+}
+
+.active, .accordion:hover {
+  background-color: #844527;
+  transform: translateY(-2px);
+
+}
+
+.panel {
+  background-color: #bfbabd;
+  color: #151518;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 18px;
+}
+.gif{
+    width: 40%;
+    height: auto;
+    display: block;
+    margin : 1rem auto;
+}
+
+.small-gif{
+  width: 200px;
+  height: auto;
+}
+
+header {
+  padding: 15px 30px;
+  top: 0;
+  z-index: 1000;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.navbar a {
+  display: block;
+  padding: 10px 20px;
+  background-color: #bfbabd; 
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.navbar a:hover {
+  background-color: #844527;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.about-me, .education, .Skills {
+  margin: 20px;
+  padding: 20px;
+  max-width: 100%;
+  background-color: #bfbabd;
+  color: #151518;
+  margin-top: 50px;
+}
