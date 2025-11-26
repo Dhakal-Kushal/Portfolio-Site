@@ -85,7 +85,7 @@ header {
 .about-me, .education, .Skills {
   margin: 20px;
   padding: 20px;
-  max-width: 100%;
+  max-width: 50%;
   background-color: #bfbabd;
   color: #151518;
   margin-top: 50px;
