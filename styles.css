@@ -6,7 +6,7 @@ body{
 .projects{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-left: 25%;
 }
 
 .accordion {
@@ -27,7 +27,6 @@ body{
 .active, .accordion:hover {
   background-color: #844527;
   transform: translateY(-2px);
-
 }
 
 .panel {
@@ -90,4 +89,5 @@ header {
   background-color: #bfbabd;
   color: #151518;
   margin-top: 50px;
+
 }
