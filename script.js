@@ -6,10 +6,8 @@ document.querySelectorAll('.accordion').forEach(btn => {
     const img = panel.querySelector('img[data-gif]');
 
     if (panel.style.maxHeight) {
-      // Collapse
       panel.style.maxHeight = null;
 
-      // Wait until animation ends before clearing src
       const onTransitionEnd = () => {
         if (img) img.removeAttribute('src'); 
         panel.removeEventListener('transitionend', onTransitionEnd);
@@ -17,7 +15,6 @@ document.querySelectorAll('.accordion').forEach(btn => {
       panel.addEventListener('transitionend', onTransitionEnd);
 
     } else {
-      // Expand
       if (img && !img.src) {
         img.src = img.dataset.gif;
         img.addEventListener('load', () => {
