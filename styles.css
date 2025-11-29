@@ -84,7 +84,7 @@ header {
 
 .about-me, .education, .Skills {
   display: flex;
-  flex-direction: column;  /* stack elements vertically */
+  flex-direction: column;
   
   margin: 50px auto;
   padding: 20px;
@@ -96,11 +96,10 @@ header {
 .about-me h2,
 .education h2,
 .Skills h2 {
-  text-align: center;      /* center only the header */
-  width: 100%;             /* ensures centering spans the whole box */
+  text-align: center;
+  width: 100%;
 }
 
-/* Make paragraph content left-aligned */
 .about-me p,
 .education p,
 .Skills p,
