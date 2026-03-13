@@ -46,11 +46,13 @@ body{
   padding: 0 18px;
 }
 
-.gif{
+.gif {
   width: 40%;
   height: auto;
   display: block;
-  margin : 1rem auto;
+  margin: 1rem auto;
+  aspect-ratio: 16 / 9; 
+  background-color: #a4674822;
 }
 
 .small-gif{
