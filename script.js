@@ -3,25 +3,26 @@ document.querySelectorAll('.accordion').forEach(btn => {
     btn.classList.toggle('active');
     const panel = btn.nextElementSibling;
     if (!panel) return;
+    
     const img = panel.querySelector('img[data-gif]');
 
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-
-      const onTransitionEnd = () => {
-        if (img) img.removeAttribute('src'); 
-        panel.removeEventListener('transitionend', onTransitionEnd);
-      };
-      panel.addEventListener('transitionend', onTransitionEnd);
-
+    if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+      panel.style.maxHeight = "0px";
+      
     } else {
-      if (img && !img.src) {
-        img.src = img.dataset.gif;
-        img.addEventListener('load', () => {
+      if (img) {
+        if (!img.src || img.src === "") {
+          img.src = img.dataset.gif;
+          
+          img.onload = () => {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          };
+        } else {
           panel.style.maxHeight = panel.scrollHeight + "px";
-        }, { once: true });
+        }
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
       }
-      panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
 });
