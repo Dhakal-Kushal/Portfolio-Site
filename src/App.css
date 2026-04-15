@@ -1,0 +1,168 @@
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 6rem 0 4rem;
+  max-width: 800px;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.hero-section h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #569cd6; /* VS Code Keyword Blue */
+  margin-bottom: 1.5rem;
+  font-family: 'Fira Code', monospace; /* Monospace for the subtitle */
+}
+
+.value-prop {
+  font-size: 1.125rem;
+  color: #cccccc;
+  margin-bottom: 2rem;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px; /* Sharper corners match VS Code UI */
+  font-weight: 600;
+  transition: all 0.2s;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+.btn.outline {
+  border: 1px solid #3c3c3c;
+  color: #d4d4d4;
+  background-color: transparent;
+}
+
+.btn.outline:hover {
+  background-color: #2a2d2e; /* VS Code hover state */
+}
+
+.btn.solid {
+  background-color: #0e639c; /* VS Code Primary UI Button */
+  color: #ffffff;
+  border: 1px solid #0e639c;
+}
+
+.btn.solid:hover {
+  background-color: #1177bb;
+}
+
+/* Projects Section */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #d4d4d4;
+  border-bottom: 1px solid #3c3c3c;
+  padding-bottom: 1rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Project Card */
+.project-card {
+  background-color: #252526; /* VS Code Sidebar/Panel Background */
+  border: 1px solid #3c3c3c; /* VS Code border */
+  border-radius: 6px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #569cd6; /* Highlights the border in blue like a selected tab */
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  color: #dcdcaa; /* VS Code Function Call Yellow */
+  margin-bottom: 1rem;
+  font-family: 'Fira Code', monospace;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+  background-color: #1e1e1e; /* Push badges back to editor color */
+  color: #4ec9b0; /* VS Code Type/Class Teal */
+  font-size: 0.75rem;
+  font-family: 'Fira Code', monospace;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #3c3c3c;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-body p {
+  color: #d4d4d4;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Making the impact text look like a code comment */
+.impact-text {
+  color: #6a9955 !important; /* VS Code Comment Green */
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem !important;
+  border-left: 3px solid #6a9955;
+  padding-left: 10px;
+}
+
+.impact-text strong {
+  font-weight: normal;
+}
+
+.source-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #569cd6; /* VS Code Keyword Blue */
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: 'Fira Code', monospace;
+}
+
+.source-link:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #3c3c3c;
+  text-align: center;
+  color: #858585;
+  font-size: 0.9rem;
+  font-family: 'Fira Code', monospace;
+}
