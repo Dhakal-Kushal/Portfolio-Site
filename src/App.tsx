@@ -9,8 +9,9 @@ function App() {
         <h1>Kushal Dhakal</h1>
         <h2>Systems & Full-Stack Software Engineer</h2>
         <p className="value-prop">
-          I am passionate about building high performing and scalable systems. Through my classwork and projects, I developed strong 
-          foundational skills in data structures, algorithms, and software design.
+          I am studying Computer Science and Software Engineering at the University of Central Florida. 
+          Through my coursework and projects, I have developed a strong foundation in software development, algorithms, and data structures.
+          I am actively seeking opportunities where I can expand on my skills and contribute to meaningful projects.
         </p>
         <div className="hero-links">
           <a href="https://github.com/Dhakal-Kushal" target="_blank" rel="noopener noreferrer" className="btn outline">GitHub</a>
