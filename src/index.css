@@ -107,6 +107,7 @@ section[id] { scroll-margin-top: 1rem; }
 .detail-head h1 { flex: 1; }
 .detail video { width: 100%; aspect-ratio: 16 / 9; background: var(--black); object-fit: contain; }
 .detail > section, .detail-grid { margin-top: 2.75rem; }
+.detail > section p + p { margin-top: 1rem; }
 .detail > section p { max-width: 42rem; }
 @media (max-width: 700px) {
   .mast-inner, main { width: 91%; }

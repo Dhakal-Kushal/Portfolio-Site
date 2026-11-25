@@ -48,8 +48,8 @@ function Lines({ text, heading = false }: { text?: string; heading?: boolean }) 
   return <span aria-hidden="true" className={heading ? 'placeholder heading-line' : 'placeholder copy-lines'}><i />{!heading && <><i /><i /></>}</span>
 }
 
-function SectionTitle({ label, icon }: { label: string; icon: IconName }) {
-  return <h2 className="section-title"><Icon name={icon} /><span className="sr">{label}</span><Lines heading /><span className="rule" /></h2>
+function SectionTitle({ label, icon, visible = false }: { label: string; icon: IconName; visible?: boolean }) {
+  return <h2 className="section-title"><Icon name={icon} />{visible ? label : <><span className="sr">{label}</span><Lines heading /></>}<span className="rule" /></h2>
 }
 
 const techIcons: IconName[] = ['code', 'database', 'terminal', 'braces', 'chip', 'layers']
@@ -73,11 +73,11 @@ function Hero() {
 }
 
 function Projects() {
-  return <section id="projects"><SectionTitle label="Projects" icon="grid" />
+  return <section id="projects"><SectionTitle visible label="Projects" icon="grid" />
     <div className="project-grid">{projects.map(project => <a className="project-card" key={project.slug}
-      href={'/?project=' + encodeURIComponent(project.slug)} aria-label={'View ' + project.label}>
+      href={'/?project=' + encodeURIComponent(project.slug)} aria-label={'View ' + project.title}>
       <img className="cover" src={project.image} alt={project.imageAlt} width="600" height="360" loading="lazy" />
-      <div className="card-body"><div><h3><Lines heading text={project.title} /></h3><p><Lines text={project.summary} /></p></div>
+      <div className="card-body"><div><h3>{project.title}</h3><p>{project.summary}</p></div>
         <span className="open"><Icon name="arrow" /></span></div>
     </a>)}</div>
   </section>
@@ -115,13 +115,13 @@ function Home() {
 function ProjectPage({ project }: { project: Project }) {
   return <article className="detail"><div className="detail-head">
     <IconLink href="/#projects" label="Back to projects" icon="back" />
-    <h1>{!project.title && <span className="sr">{project.label}</span>}<Lines heading text={project.title} /></h1></div>
-    <video controls playsInline preload="none" poster={project.image} src={project.demo} aria-label={project.label + ' demo video'} />
-    <section><SectionTitle label="Description" icon="file" /><p><Lines text={project.description} /></p></section>
+    <h1>{project.title}</h1></div>
+    <video controls playsInline preload="none" poster={project.image} src={project.demo} aria-label={project.title + ' demo video'} />
+    <section><SectionTitle visible label="Description" icon="file" />{project.description.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>
     <div className="detail-grid">{([
       ['Tech stack', 'layers', project.stack], ['Libraries', 'library', project.libraries],
       ['Frameworks', 'frame', project.frameworks], ['Tools', 'tools', project.tools],
-    ] as const).map(([label, icon, items]) => <section key={label}><SectionTitle label={label} icon={icon} /><Tags items={items} /></section>)}</div>
+    ] as const).filter(([, , items]) => items.length > 0).map(([label, icon, items]) => <section key={label}><SectionTitle visible label={label} icon={icon} /><Tags items={items} /></section>)}</div>
   </article>
 }
 
@@ -129,7 +129,7 @@ export default function App() {
   const slug = new URLSearchParams(window.location.search).get('project')
   const project = projects.find(item => item.slug === slug)
   useEffect(() => {
-    document.title = project ? project.label + ' | Portfolio' : profile.name + ' | Portfolio'
+    document.title = project ? project.title + ' | Portfolio' : profile.name + ' | Portfolio'
     if (!project && window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
   }, [project])
   return <><a href="#main" className="skip" aria-label="Skip to main content"><Icon name="back" /></a>
