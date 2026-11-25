@@ -43,27 +43,19 @@ function Header() {
   </div></header>
 }
 
-function Lines({ text, heading = false }: { text?: string; heading?: boolean }) {
-  if (text) return <span>{text}</span>
-  return <span aria-hidden="true" className={heading ? 'placeholder heading-line' : 'placeholder copy-lines'}><i />{!heading && <><i /><i /></>}</span>
+function SectionTitle({ label, icon }: { label: string; icon: IconName }) {
+  return <h2 className="section-title"><Icon name={icon} />{label}<span className="rule" /></h2>
 }
 
-function SectionTitle({ label, icon, visible = false }: { label: string; icon: IconName; visible?: boolean }) {
-  return <h2 className="section-title"><Icon name={icon} />{visible ? label : <><span className="sr">{label}</span><Lines heading /></>}<span className="rule" /></h2>
-}
-
-const techIcons: IconName[] = ['code', 'database', 'terminal', 'braces', 'chip', 'layers']
-
-function Tags({ items, count = 3 }: { items: string[]; count?: number }) {
-  return <ul className="tags">{items.length ? items.map(item => <li key={item}>{item}</li>) :
-    techIcons.slice(0, count).map(icon => <li key={icon} aria-hidden="true"><Icon name={icon} /></li>)}</ul>
+function Tags({ items }: { items: string[] }) {
+  return <ul className="tags">{items.map(item => <li key={item}>{item}</li>)}</ul>
 }
 
 function Hero() {
   return <section className="hero" aria-label="Profile">
     <div className="intro"><div className="avatar-row"><img className="avatar" src={profile.photo} alt="Placeholder profile portrait" /><span className="avatar-rule" /></div>
-      <h1>{!profile.heading && <span className="sr">{profile.name}</span>}<Lines heading text={profile.heading} /></h1>
-      <p><Lines text={profile.summary} /></p>
+      <h1>{profile.name}</h1>
+      <p>{profile.summary}</p>
       <div className="socials"><IconLink href={profile.github} label="GitHub" icon="github" />
         <IconLink href={profile.linkedin} label="LinkedIn" icon="linkedin" />
         <IconLink href={profile.resume} label="Résumé PDF" icon="file" />
@@ -73,7 +65,7 @@ function Hero() {
 }
 
 function Projects() {
-  return <section id="projects"><SectionTitle visible label="Projects" icon="grid" />
+  return <section id="projects"><SectionTitle label="Projects" icon="grid" />
     <div className="project-grid">{projects.map(project => <a className="project-card" key={project.slug}
       href={'/?project=' + encodeURIComponent(project.slug)} aria-label={'View ' + project.title}>
       <img className="cover" src={project.image} alt={project.imageAlt} width="600" height="360" loading="lazy" />
@@ -97,7 +89,7 @@ function Contact() {
     } catch { setStatus('manual') }
   }
   return <section id="contact" className="contact"><div><SectionTitle label="Contact me" icon="mail" />
-    <a className="email-link" href={'mailto:' + profile.email} aria-label={'Email ' + profile.name}><Lines heading /><Icon name="arrow" /></a></div>
+    <a className="email-link" href={'mailto:' + profile.email} aria-label={'Email ' + profile.name}>{profile.email}<Icon name="arrow" /></a></div>
     <button className="control copy" title="Copy email address" aria-label="Copy email address" onClick={copyEmail}><Icon name={status === 'copied' ? 'check' : 'copy'} /></button>
     <span role="status" className="sr">{status === 'copied' ? 'Email copied' : status === 'manual' ? 'Select the address to copy it manually' : ''}</span>
     {status === 'manual' && <input readOnly value={profile.email} aria-label="Email address to copy" onFocus={e => e.target.select()} />}
@@ -107,8 +99,8 @@ function Contact() {
 function Home() {
   return <><Hero /><Projects /><div className="lower-grid">
     <section id="experience"><SectionTitle label="Experience" icon="case" /><div className="experience">{experience.map(item =>
-      <article key={item.id}><span className="timeline-dot" /><div><h3><Lines heading text={item.role} /></h3><p><Lines text={item.description} /></p></div></article>)}</div></section>
-    <section id="stack"><SectionTitle label="Technical stack" icon="layers" /><Tags items={technicalStack} count={6} /></section>
+      <article key={item.id}><span className="timeline-dot" /><div><h3>{item.role}</h3><p>{item.organization} &middot; {item.location}</p><p>{item.period}</p><p>{item.description}</p></div></article>)}</div></section>
+    <section id="stack"><SectionTitle label="Technical stack" icon="layers" />{technicalStack.map(group => <div className="skill-group" key={group.label}><h3>{group.label}</h3><Tags items={group.items} /></div>)}</section>
   </div><Contact /></>
 }
 
@@ -117,11 +109,11 @@ function ProjectPage({ project }: { project: Project }) {
     <IconLink href="/#projects" label="Back to projects" icon="back" />
     <h1>{project.title}</h1></div>
     <video controls playsInline preload="none" poster={project.image} src={project.demo} aria-label={project.title + ' demo video'} />
-    <section><SectionTitle visible label="Description" icon="file" />{project.description.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>
+    <section><SectionTitle label="Description" icon="file" />{project.description.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>
     <div className="detail-grid">{([
       ['Tech stack', 'layers', project.stack], ['Libraries', 'library', project.libraries],
       ['Frameworks', 'frame', project.frameworks], ['Tools', 'tools', project.tools],
-    ] as const).filter(([, , items]) => items.length > 0).map(([label, icon, items]) => <section key={label}><SectionTitle visible label={label} icon={icon} /><Tags items={items} /></section>)}</div>
+    ] as const).filter(([, , items]) => items.length > 0).map(([label, icon, items]) => <section key={label}><SectionTitle label={label} icon={icon} /><Tags items={items} /></section>)}</div>
   </article>
 }
 

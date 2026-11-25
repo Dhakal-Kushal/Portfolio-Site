@@ -1,12 +1,11 @@
 export const profile = {
   name: 'Kushal Dhakal',
-  heading: '',
-  summary: '',
+  summary: 'I’m a senior studying computer science at the University of Central Florida, graduating in May 2027. I build software that turns camera input into something people can use, from a hands-free mouse to a tool for comparing satellite images of buildings. I also work across the web stack, from React interfaces to the APIs and deployment workflows behind them.',
   photo: '/media/portrait.png',
   github: 'https://github.com/Dhakal-Kushal',
   linkedin: 'https://www.linkedin.com/in/kushal-dhakal-127772227/',
   resume: '/resume.pdf',
-  email: 'Kushald592@gmail.com',
+  email: 'kushald592@gmail.com',
 }
 
 export interface Project {
@@ -115,8 +114,15 @@ export const projects: Project[] = [
 ]
 
 export const experience = [
-  { id: 'first', role: '', description: '' },
-  { id: 'second', role: '', description: '' },
+  {
+    id: 'target', role: 'Front of Store Attendant', organization: 'Target Corporation',
+    period: 'March 2023 – present', location: 'Oviedo, FL',
+    description: 'I work with teammates and customers to resolve point-of-sale errors and keep checkout moving. I work 15 hours a week alongside a full-time computer science course load.',
+  },
 ]
 
-export const technicalStack: string[] = []
+export const technicalStack = [
+  { label: 'Languages', items: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'C', 'C++', 'HTML/CSS'] },
+  { label: 'Frameworks and libraries', items: ['PyTorch', 'Hugging Face Transformers', 'Anomalib', 'NumPy', 'OpenCV', 'MediaPipe', 'React', 'Node.js', 'Express'] },
+  { label: 'Tools and environments', items: ['Git', 'GitHub Actions', 'Linux', 'MongoDB', 'SQLite', 'Postman', 'Python unittest', 'Vitest', 'Nginx', 'PM2'] },
+]
