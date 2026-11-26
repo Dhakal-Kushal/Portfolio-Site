@@ -108,7 +108,9 @@ function ProjectPage({ project }: { project: Project }) {
   return <article className="detail"><div className="detail-head">
     <IconLink href="/#projects" label="Back to projects" icon="back" />
     <h1>{project.title}</h1></div>
-    <video controls playsInline preload="none" poster={project.image} src={project.demo} aria-label={project.title + ' demo video'} />
+    {project.demo.endsWith('.gif')
+      ? <img className="project-demo" src={project.demo} alt={project.title + ' demo'} />
+      : <video className="project-demo" controls playsInline preload="none" poster={project.image} src={project.demo} aria-label={project.title + ' demo video'} />}
     <section><SectionTitle label="Description" icon="file" />{project.description.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>
     <div className="detail-grid">{([
       ['Tech stack', 'layers', project.stack], ['Libraries', 'library', project.libraries],
